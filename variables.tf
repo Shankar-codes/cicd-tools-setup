@@ -7,7 +7,9 @@ variable "environment" {
 }
 
 variable "zone_id" {
-    type        = string
-    description = "The ID of the Route53 Hosted Zone"
-    default     = "Z1PA6795UKMFR9"
+  default = "Z00405822WO8HCQACP58A"
+}
+
+variable "domain_name" {
+    default     = "ellamma.fun"
 }
