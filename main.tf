@@ -60,8 +60,19 @@ resource "aws_security_group" "main" {
 ########### Route 53 creation for Jenkins server ##########
 resource "aws_route53_record" "jenkins" {
   zone_id = locals.zone_id
-  name    = "www.example.com"
+  name    = "jenkins.${locals.domain_name}"
   type    = "A"
-  ttl     = 300
-  records = [aws_eip.lb.public_ip]
+  ttl     = 1
+  records = [aws_instance.jenkins.public_ip]
+  allow_overwrite = true
+}
+
+########### Route 53 creation for Jenkins agent server ##########
+resource "aws_route53_record" "jenkins_agent" {
+  zone_id = locals.zone_id
+  name    = "jenkins-agent.${locals.domain_name}"
+  type    = "A"
+  ttl     = 1
+  records = [aws_instance.jenkins_agent.private_ip]
+  allow_overwrite = true
 }
