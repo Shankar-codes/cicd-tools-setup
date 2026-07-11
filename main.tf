@@ -2,7 +2,7 @@ resource "aws_instance" "jenkins" {
   ami           = locals.ami_id
   instance_type = "t3.small"
   vpc_security_group_ids = [aws_security_group.main.id]
-  subnet_id=aws_subnet.main.id
+  subnet_id = "subnet-0855c462673a0f73c"
   
     # need more for terraform
   root_block_device {
