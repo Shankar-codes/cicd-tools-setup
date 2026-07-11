@@ -57,3 +57,11 @@ resource "aws_security_group" "main" {
      }
 }
 
+########### Route 53 creation for Jenkins server ##########
+resource "aws_route53_record" "jenkins" {
+  zone_id = locals.zone_id
+  name    = "www.example.com"
+  type    = "A"
+  ttl     = 300
+  records = [aws_eip.lb.public_ip]
+}
