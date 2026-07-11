@@ -10,3 +10,11 @@ lvextend -l +100%FREE /dev/mapper/RootVG-homeVol
 xfs_growfs /
 xfs_growfs /var
 xfs_growfs /home
+
+sudo curl -L -o /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum install fontconfig java-21-openjdk -y
+sudo yum install jenkins -y
+sudo systemctl daemon-reload
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
