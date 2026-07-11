@@ -1,8 +1,8 @@
 resource "aws_instance" "jenkins" {
-  ami           = data.aws_ami.jenkins.id
-  instance_type = "t3.micro"
+  ami           = locals.ami_id
+  instance_type = "t3.small"
   
   tags = {
-    Name = "HelloWorld"
+    Name = "Jenkins-Server"
   }
 }
