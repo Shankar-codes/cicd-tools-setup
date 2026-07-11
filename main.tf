@@ -1,5 +1,5 @@
 resource "aws_instance" "jenkins" {
-  ami           = "resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+  ami           = data.aws_ami.jenkins.id
   instance_type = "t3.micro"
   
   tags = {
